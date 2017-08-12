@@ -23,6 +23,8 @@ UI 스레드에는 다른 프로세스에세 실행가능한 오브젝트나 메
 	Progress : 백그라운드 작업 진행률을 업데이트 하기 위한 타입 / 함수 : onProgressUpdate
 	Reuslt : 백그라운드 작업의 결과값의 타입입니다. / 함수 : onPostExecute
 
+	Progress bar를 넣어 줄때,
+	onPreExecute()에서 VISIBLE, onPostExecute에서 INVISIBLE
 비동기 작업을 백그라운드에서 실행하기 위해서는 파라미터와 함께 Exectue를 호출해주면 됩니다.
 그러면 비동기작업이 몇가지 단계를 걸쳐 시작하게 됩니다.
 
