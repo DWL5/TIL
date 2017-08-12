@@ -3,19 +3,19 @@
 
 URI.builder
 
-Uri builtUri = 
-Uri.parse(GITHUB_BASE_URL).buildUpon()
+  Uri builtUri = 
+  Uri.parse(GITHUB_BASE_URL).buildUpon()
 
-.appendQueryParameter(PARAM_QUERY,githubSearchQuery)
-.appendQueryParameter(PARAM_SORT,sortBy)
-.build();
+  .appendQueryParameter(PARAM_QUERY,githubSearchQuery)
+  .appendQueryParameter(PARAM_SORT,sortBy)
+  .build();
 
-Android Uri
+  Android Uri
 
-URL url = null;
+  URL url = null;
 
-try{
-  url = new URL(builtUri.toString());
-  }catch(MalformedURLException e){
-    e.printStackTrace();
-  }
+  try{
+    url = new URL(builtUri.toString());
+    }catch(MalformedURLException e){
+      e.printStackTrace();
+    }
