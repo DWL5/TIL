@@ -37,6 +37,15 @@ UI 스레드에는 다른 프로세스에세 실행가능한 오브젝트나 메
 만약 여러분이 오래 걸리는 작업의 중간 결과를 UI에 출력하고 싶다면  publishProgress에 progress파라미터를 주어 호출하면되는데
 이것이 UI스레드의 onProgressUpdate가 progress파라미터를 가지고 실행되도록 해줍니다. doinBackground에서 publicshProgress를 원하는 마늠 호출 할 수 있습니다.
 
+
+
+정리
+
+URL,Void,String타입을 사용하는 비동기작업인 GithubQueryTask를 메인액티비티의 내부클래스로 만들고
+NetworkUtils.getResponseFromHttpUrl메소드를 이용하여 GitHub에 요청을 보내기 위해 doinBackground를 오버라이드합니다.
+그 반환 값을 텍스트뷰에 넣기 위해 onPostExectute를 오버라이드 합니다. 마지막으로 makeGtihubSearchQuey함수에서 네트워킹 관련 코드를
+수정하여 우리가 만든 비동기 작업을 인스턴스화 하여야 합니다.
+
 마지막으로 doinBackground가 완료되면 결과값을 반환하는데 이때 OnPostExecute함수가 그 결과값과 함께 UI 스레드에서 실행됩니다.
 비동기작업은 스레드사이의 스레딩과 메세징을 위한 유용한 추상화(abstractioon)입니다.
 
