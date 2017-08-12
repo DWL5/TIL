@@ -51,3 +51,7 @@ Background에서 실행되는 함수
 	
 	doInBackground()
 	publicshProgress()
+	
+
+public class GithubQueryTask extends AsyncTask<URL, Void, String> >>> 이 타입에 따라 execute와 doInBackground메소드는
+URL을 받고, 작업 중간 진행상황을 보여주지 않을 것이며 비동기 작업의 반환 타입이 문자열이라는 것을 알 수 있다.
