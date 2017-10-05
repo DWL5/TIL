@@ -1,0 +1,66 @@
+http://croute.me/392
+
+public class ManyButtonExampleActivity extends Activity implements OnClickListener
+{
+    // 여러개의 버튼을 배열로 처리하기 위해 버튼에 대해 배열 선언을 함
+    private Button[] mButton = new Button[6];
+     
+    // 각각 다르게 출력할 스트링을 넣어둘 리스트
+    private ArrayList<String> mDataList;
+ 
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+ 
+        mDataList = new ArrayList<String>();
+         
+        mButton[0] = (Button) findViewById(R.id.main_b_00);
+        mButton[1] = (Button) findViewById(R.id.main_b_01);
+        mButton[2] = (Button) findViewById(R.id.main_b_02);
+        mButton[3] = (Button) findViewById(R.id.main_b_03);
+        mButton[4] = (Button) findViewById(R.id.main_b_04);
+        mButton[5] = (Button) findViewById(R.id.main_b_05);
+ 
+        // 버튼들에 대한 클릭리스너 등록 및 각 버튼이 클릭되었을 때 출력될 메시지 생성(리스트)
+        for(int i = 0 ; i < 6 ; i++)
+        {
+            // 버튼의 포지션(배열에서의 index)를 태그로 저장
+            mButton[i].setTag(i);
+             
+            // 클릭 리스너 등록
+            mButton[i].setOnClickListener(this);
+             
+            // 출력할 데이터 생성
+            mDataList.add("하이" + i + "입니다");
+        }
+    }
+ 
+    /* (non-Javadoc)
+     * @see android.view.View.OnClickListener#onClick(android.view.View)
+     */
+    @Override
+    public void onClick(View v)
+    {
+        // 클릭된 뷰를 버튼으로 받아옴
+        Button newButton = (Button) v;
+ 
+        // 향상된 for문을 사용, 클릭된 버튼을 찾아냄
+        for(Button tempButton : mButton)
+        {
+            // 클릭된 버튼을 찾았으면
+            if(tempButton == newButton)
+            {
+                // 위에서 저장한 버튼의 포지션을 태그로 가져옴
+                int position = (Integer)v.getTag();
+                 
+                // 태그로 가져온 포지션을 이용해 리스트에서 출력할 데이터를 꺼내서 토스트 메시지 출력
+                Toast.makeText(this, mDataList.get(position), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+}
+
+
+출처: http://croute.me/392 [식탁 위의 프로그래머]
