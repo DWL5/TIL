@@ -1,0 +1,43 @@
+email 받아오기
+
+<Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email,link");
+                request.setParameters(parameters);
+                request.executeAsync();> - 이걸 추가 해줬어야
+                
+facebookloginButton = (LoginButton)findViewById(R.id.facebook_login_button);
+        callbackManager = CallbackManager.Factory.create();
+        facebookloginButton.setReadPermissions(Arrays.asList("email", "public_profile"));
+        facebookloginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken() ,
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject object, GraphResponse response) {
+                                try {
+                                    Log.e("user profile",object.toString());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email,link");
+                request.setParameters(parameters);
+                request.executeAsync();
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+        callback = new SessionCallback();
+        Session.getCurrentSession().addCallback(callback);
+    }
